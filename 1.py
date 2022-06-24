@@ -6,10 +6,16 @@ from selenium import webdriver
 import time
 # Указываем полный путь к geckodriver.exe на вашем ПК.
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
 class SileniumTest:
-    driver = webdriver.Chrome('C:\\PythonProjects\\Selenium61\\chromedriver.exe')
+    options = Options()
+
+    options.headless = True
+
+    driver = webdriver.Chrome(options=options)
     driver.get("https://www.youtube.com/")
+    print("Браузер запущен. Вход выполнен!")
     # time.sleep(4)
     # element = driver.find_element(By.XPATH, """/html/body/ytd-app/div[1]/ytd-mini-guide-renderer/div/ytd-mini-guide-entry-renderer[3]/a""")
     # element.click()
@@ -33,7 +39,7 @@ class SileniumTest:
             break
     """Выведем ссылку на первое видео"""
     print("")
-    print(videos[0].get_attribute('href'))
+    # print(videos[0].get_attribute('href'))
 
 if __name__ == '__main__':
     SileniumTest()
